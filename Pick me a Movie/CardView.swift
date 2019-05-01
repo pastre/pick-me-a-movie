@@ -10,6 +10,8 @@ import UIKit
 
 @IBDesignable class CardView: UIView {
 
+    
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         

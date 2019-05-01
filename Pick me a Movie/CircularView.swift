@@ -50,7 +50,10 @@ class CircularView: UIView {
         return imageView
     }()
     
+//    var iconLocation: [String : UIImageView] = [String : UIImageView]()
+    
     var hasSetup = false
+    var currentSelection: String!
     
     override func layoutSubviews() {
         self.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -63,31 +66,87 @@ class CircularView: UIView {
         }
     }
     
-    func updateSelectedIcons(){
+    func updateSelectedIcons(at point: CGPoint){
+//        print("Point is", point)
+        let x = point.x
+        let y = point.y
+        var mapTouch: String! = ""
+        
+        if x > 0{
+            self.liked.image = UIImage(named: "likedSelected")
+            self.disliked.image = UIImage(named: "disliked")
+            mapTouch += ("r")
+        }else{
+            self.liked.image = UIImage(named: "liked")
+            self.disliked.image = UIImage(named: "dislikedSelected")
+            mapTouch += ("l")
+        }
+    
+        if y < 0{
+            self.watched.image = UIImage(named: "watchedSelected")
+            self.unwatched.image = UIImage(named: "unwatched")
+            mapTouch += ("t")
+        }else {
+            self.watched.image = UIImage(named: "watched")
+            self.unwatched.image = UIImage(named: "unwatchedSelected")
+            mapTouch += ("b")
+        }
+//        print("Map touch is", mapTouch, self.currentSelection ?? "espera ai")
+        self.currentSelection = mapTouch
         
     }
+    
+    func animateSelectedIcons(){
+        let transformScale: CGFloat = 4
+        
+        let isTop = self.currentSelection.contains("t")
+        let isLeft = self.currentSelection.contains("l")
+        
+        let transformUpwards = isTop ? watched : unwatched
+        let transformSides = isLeft ? disliked : liked
+        
+        UIView.animate(withDuration: 0.8, animations: {
+            transformUpwards.transform = transformUpwards.transform.scaledBy(x: transformScale, y: transformScale)
+            transformUpwards.alpha = 0
+        }) { (_) in
+            transformUpwards.transform = transformUpwards.transform.scaledBy(x: 1/transformScale, y: 1/transformScale)
+            transformUpwards.alpha = 1
+        }
+        
+        UIView.animate(withDuration: 1, animations: {
+            transformSides.transform = transformSides.transform.scaledBy(x: transformScale, y: transformScale)
+            transformSides.alpha = 0
+        }) { (_) in
+            transformSides.transform = transformSides.transform.scaledBy(x: 1/transformScale, y: 1/transformScale)
+            transformSides.alpha = 1
+        }
+        
+
+        print(isTop, isLeft)
+    }
+    
     
     func setupIcons(){
 //        self.setupWatchedIcon()
         
-        self.setupIcon(imageView: unwatched, at: "tl")
-        self.setupIcon(imageView: watched, at: "tr")
-        self.setupIcon(imageView: liked, at: "br")
-        self.setupIcon(imageView: disliked, at: "bl")
+        self.setupIcon(imageView: unwatched, at: "tr")
+        self.setupIcon(imageView: watched, at: "tl")
+        self.setupIcon(imageView: liked, at: "bl")
+        self.setupIcon(imageView: disliked, at: "br")
     }
-    
-    
     func setupIcon(imageView: UIImageView, at: String){
-        let frame = imageView.image!.size
         var wFrame, hFrame : CGFloat!
-        let div = self.frame.size.width
-        self.addSubview(imageView)
         
-        /*  _______
+        self.addSubview(imageView)
+//        iconLocation[at] = imageView
+        
+        /* Os icones tem esses possiveis posicionamentos
+            _______
            | tr tl |
            | br bl |
            ---------
          */
+        
         let offset = CGFloat(30)
         switch at {
             case "tl":
