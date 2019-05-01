@@ -14,6 +14,8 @@
 		D7BC3E892278796500A28DD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7BC3E872278796500A28DD6 /* LaunchScreen.storyboard */; };
 		D7BC3E942278796600A28DD6 /* Pick_me_a_MovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC3E932278796600A28DD6 /* Pick_me_a_MovieTests.swift */; };
 		D7BC3E9F2278796600A28DD6 /* Pick_me_a_MovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC3E9E2278796600A28DD6 /* Pick_me_a_MovieUITests.swift */; };
+		D7BC3EB12278B82A00A28DD6 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC3EB02278B82A00A28DD6 /* CardView.swift */; };
+		D7BC3EB32278C16C00A28DD6 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC3EB22278C16C00A28DD6 /* CircularView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		D7BC3E9A2278796600A28DD6 /* Pick me a MovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pick me a MovieUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BC3E9E2278796600A28DD6 /* Pick_me_a_MovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pick_me_a_MovieUITests.swift; sourceTree = "<group>"; };
 		D7BC3EA02278796600A28DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7BC3EB02278B82A00A28DD6 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D7BC3EB22278C16C00A28DD6 /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				D7BC3E852278796500A28DD6 /* Assets.xcassets */,
 				D7BC3E872278796500A28DD6 /* LaunchScreen.storyboard */,
 				D7BC3E8A2278796500A28DD6 /* Info.plist */,
+				D7BC3EB02278B82A00A28DD6 /* CardView.swift */,
+				D7BC3EB22278C16C00A28DD6 /* CircularView.swift */,
 			);
 			path = "Pick me a Movie";
 			sourceTree = "<group>";
@@ -257,6 +263,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7BC3E812278796400A28DD6 /* ViewController.swift in Sources */,
+				D7BC3EB32278C16C00A28DD6 /* CircularView.swift in Sources */,
+				D7BC3EB12278B82A00A28DD6 /* CardView.swift in Sources */,
 				D7BC3E7F2278796400A28DD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
