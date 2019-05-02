@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Movie{
     internal init(director_name: String?, num_critic_for_reviews: String?, duration: String?, actor_2_name: String?, genres: String?, actor_1_name: String?, movie_title: String?, num_voted_users: String?, actor_3_name: String?, plot_keywords: String?, movie_imdb_link: String?, country: String?, content_rating: String?, title_year: String?, imdb_score: String?, movie_facebook_likes: String?, synopsis: String?, imageSrc: String?, metacriticScore: String?) {
@@ -34,6 +35,7 @@ class Movie{
     
     public var description: String { return "Movie: \(self.movie_title!)" }
     
+    var image: UIImage?
     var director_name: String!
     var num_critic_for_reviews: String!
     var duration: String!

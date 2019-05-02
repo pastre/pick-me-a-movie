@@ -129,11 +129,12 @@ class CircularView: UIView {
     func setupIcons(){
 //        self.setupWatchedIcon()
         
-        self.setupIcon(imageView: unwatched, at: "tr")
-        self.setupIcon(imageView: watched, at: "tl")
-        self.setupIcon(imageView: liked, at: "bl")
-        self.setupIcon(imageView: disliked, at: "br")
+        self.setupIcon(imageView: unwatched, at: "b")
+        self.setupIcon(imageView: watched, at: "t")
+        self.setupIcon(imageView: liked, at: "r")
+        self.setupIcon(imageView: disliked, at: "l")
     }
+    
     func setupIcon(imageView: UIImageView, at: String){
         var wFrame, hFrame : CGFloat!
         
@@ -141,26 +142,27 @@ class CircularView: UIView {
 //        iconLocation[at] = imageView
         
         /* Os icones tem esses possiveis posicionamentos
-            _______
-           | tr tl |
-           | br bl |
+            ________
+           |   t   |
+           | r   l |
+           |   b   |
            ---------
          */
         
-        let offset = CGFloat(30)
+        let offset = CGFloat(40)
         switch at {
-            case "tl":
+            case "t":
+                wFrame = 0
+                hFrame = -offset
+            case "r":
                 wFrame = offset
-                hFrame = -offset
-            case "tr":
+                hFrame = 0
+            case "l":
                 wFrame = -offset
-                hFrame = -offset
-            case "br":
-                wFrame = -offset
-                hFrame = offset
+                hFrame = 0
             
-            case "bl":
-                wFrame = offset
+            case "b":
+                wFrame = 0
                 hFrame = offset
             default:
                 break

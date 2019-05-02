@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     }
     func removeOverlay(){
         //TODO: Animation
-        self.overlayView.animateSelectedIcons()                                                                                                                                                                                                                                                                 
+        self.overlayView.animateSelectedIcons()
         UIView.animate(withDuration: 0.8, animations: {
             self.overlayView.alpha = 0
         }) { (completed) in
@@ -117,6 +117,13 @@ class ViewController: UIViewController {
         }
         self.removeOverlay()
         
+        guard let rec = self.movieProvider.getRecomendation() else{
+            return
+        }
+        self.currentMovie = rec
+        self.performSegue(withIdentifier: "movieDetails", sender: self)
+        
+//        self.performSegue(withIdentifier: "movieDetails", sender: nil)
     }
 
     @IBAction func onTapped(_ sender: Any) {
@@ -142,6 +149,15 @@ class ViewController: UIViewController {
         self.overlayView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         self.overlayView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
         self.overlayView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5).isActive = true
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let movie = self.currentMovie else{ return }
+        
+        let dest = segue.destination as! MovieViewController
+        dest.movie = movie
+        
     }
     
 }

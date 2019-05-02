@@ -13,6 +13,7 @@ class MovieProvider{
     static let instance = MovieProvider()
     
     var presentedMovies: [Movie] = [Movie]()
+    
     let movies: [Movie] = {
         var movies: [Movie] = [Movie]()
         if let path = Bundle.main.path(forResource: "movies", ofType: "json") {
@@ -35,6 +36,14 @@ class MovieProvider{
     }()
     
     private init(){    }
+    
+    func getRecomendation() -> Movie?{
+        if(self.presentedMovies.count < 10){
+            return nil
+        }
+        let ret = movies.randomElement()
+        return ret
+    }
     
     func getMovie() -> Movie{
         var movie: Movie

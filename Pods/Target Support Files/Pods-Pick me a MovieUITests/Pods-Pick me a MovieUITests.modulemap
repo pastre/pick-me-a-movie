@@ -1,0 +1,6 @@
+framework module Pods_Pick_me_a_MovieUITests {
+  umbrella header "Pods-Pick me a MovieUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
