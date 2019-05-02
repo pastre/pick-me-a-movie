@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircularView: UIView {
+class OverlayView: UIView {
     
     let watched: UIImageView = {
         let imageView: UIImageView = UIImageView()

@@ -24,8 +24,8 @@ class ViewController: UIViewController {
     var currentMovie: Movie?
     let movieProvider: MovieProvider = MovieProvider.instance
     
-    let overlayView: CircularView = {
-        let ret = CircularView()
+    let overlayView: OverlayView = {
+        let ret = OverlayView()
         ret.translatesAutoresizingMaskIntoConstraints = false
 //        print("Returning circular view")
         return ret
@@ -154,7 +154,6 @@ class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let movie = self.currentMovie else{ return }
-        
         let dest = segue.destination as! MovieViewController
         dest.movie = movie
         

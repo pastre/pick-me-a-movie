@@ -221,46 +221,88 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9QR-rI-k7Y">
                                 <rect key="frame" x="20" y="464" width="374" height="90"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ONf-JM-6P8">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="ONf-JM-6P8">
+                                    <size key="itemSize" width="108" height="62"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="v28-my-K4Y">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="starCell" id="v28-my-K4Y" customClass="StarCollectionViewCell" customModule="Pick_me_a_Movie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14" width="108" height="62"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Zh-zs-VZf">
+                                                    <rect key="frame" x="0.0" y="50" width="108" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRJ-2x-Wfh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="50"/>
+                                                    <color key="backgroundColor" red="0.1940714717" green="0.400082469" blue="0.85494416949999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </view>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="6Zh-zs-VZf" secondAttribute="trailing" id="2Ln-rB-7x5"/>
+                                            <constraint firstAttribute="trailing" secondItem="WRJ-2x-Wfh" secondAttribute="trailing" id="6fV-0Y-CmT"/>
+                                            <constraint firstAttribute="bottom" secondItem="6Zh-zs-VZf" secondAttribute="bottom" id="Fqx-fq-kCo"/>
+                                            <constraint firstItem="6Zh-zs-VZf" firstAttribute="top" secondItem="WRJ-2x-Wfh" secondAttribute="bottom" id="G3T-ju-dzF"/>
+                                            <constraint firstItem="6Zh-zs-VZf" firstAttribute="leading" secondItem="v28-my-K4Y" secondAttribute="leading" id="SSU-dQ-njk"/>
+                                            <constraint firstItem="WRJ-2x-Wfh" firstAttribute="top" secondItem="v28-my-K4Y" secondAttribute="top" id="Xpl-BR-61h"/>
+                                            <constraint firstItem="WRJ-2x-Wfh" firstAttribute="leading" secondItem="v28-my-K4Y" secondAttribute="leading" id="qiz-Ol-xoz"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="actorName" destination="6Zh-zs-VZf" id="i0e-6t-UXH"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdT-en-3vZ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdT-en-3vZ">
                                 <rect key="frame" x="20" y="594" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A4j-uV-V26">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="A4j-uV-V26">
                                 <rect key="frame" x="20" y="625" width="374" height="89.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dtq-Lb-ieU">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="50" minimumInteritemSpacing="50" sectionInsetReference="safeArea" id="Dtq-Lb-ieU">
+                                    <size key="itemSize" width="100" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jGq-nl-w1Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genreCell" id="jGq-nl-w1Z" customClass="GenreCollectionViewCell" customModule="Pick_me_a_Movie" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="20" width="100" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="qH4-nA-cJ0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="qH4-nA-cJ0" secondAttribute="trailing" id="OsY-ho-epl"/>
+                                            <constraint firstItem="qH4-nA-cJ0" firstAttribute="top" secondItem="jGq-nl-w1Z" secondAttribute="top" id="ean-eG-c4N"/>
+                                            <constraint firstAttribute="bottom" secondItem="qH4-nA-cJ0" secondAttribute="bottom" id="ic6-vT-aS2"/>
+                                            <constraint firstItem="qH4-nA-cJ0" firstAttribute="leading" secondItem="jGq-nl-w1Z" secondAttribute="leading" id="lNg-6r-nnH"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="genreName" destination="qH4-nA-cJ0" id="pkn-bW-4nn"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -356,10 +398,10 @@
                     <connections>
                         <outlet property="countryLabel" destination="jps-oW-1Qe" id="rr4-Zb-znr"/>
                         <outlet property="durationLabel" destination="n42-5B-1mp" id="ELL-tw-Tz3"/>
-                        <outlet property="genresCollectionView" destination="A4j-uV-V26" id="EAs-cj-Ivg"/>
+                        <outlet property="genresCollectionView" destination="A4j-uV-V26" id="OQU-i7-XHG"/>
                         <outlet property="loadingView" destination="gQX-8i-8xm" id="h1J-fv-tbl"/>
                         <outlet property="posterImageView" destination="1T5-bh-rPk" id="pu1-uf-Muo"/>
-                        <outlet property="starsCollectionView" destination="9QR-rI-k7Y" id="WMK-Wo-ITF"/>
+                        <outlet property="starsCollectionView" destination="9QR-rI-k7Y" id="2fU-11-hEr"/>
                         <outlet property="synopsisLabel" destination="4Il-Jo-aN0" id="sHo-fZ-B6G"/>
                         <outlet property="titleLabel" destination="ncW-9W-3aM" id="1vY-K8-i6U"/>
                         <outlet property="yearLabel" destination="Ne8-6k-hye" id="jTq-qO-br1"/>

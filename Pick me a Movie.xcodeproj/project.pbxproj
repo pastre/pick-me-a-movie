@@ -14,6 +14,8 @@
 		D762CCCA227A099000D683E2 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = D762CCC9227A099000D683E2 /* movies.json */; };
 		D762CCCC227A09E300D683E2 /* MovieProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762CCCB227A09E300D683E2 /* MovieProvider.swift */; };
 		D762CCCE227A3AB000D683E2 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D762CCCD227A3AB000D683E2 /* MovieViewController.swift */; };
+		D767AB3A227B796900E281D8 /* StarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D767AB39227B796900E281D8 /* StarCollectionView.swift */; };
+		D767AB3C227B8E8B00E281D8 /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D767AB3B227B8E8B00E281D8 /* GenreCollectionViewCell.swift */; };
 		D7BC3E7F2278796400A28DD6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC3E7E2278796400A28DD6 /* AppDelegate.swift */; };
 		D7BC3E812278796400A28DD6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC3E802278796400A28DD6 /* ViewController.swift */; };
 		D7BC3E842278796400A28DD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7BC3E822278796400A28DD6 /* Main.storyboard */; };
@@ -55,6 +57,8 @@
 		D762CCC9227A099000D683E2 /* movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		D762CCCB227A09E300D683E2 /* MovieProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieProvider.swift; sourceTree = "<group>"; };
 		D762CCCD227A3AB000D683E2 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		D767AB39227B796900E281D8 /* StarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarCollectionView.swift; sourceTree = "<group>"; };
+		D767AB3B227B8E8B00E281D8 /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 		D7BC3E7B2278796400A28DD6 /* Pick me a Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick me a Movie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7BC3E7E2278796400A28DD6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7BC3E802278796400A28DD6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +125,6 @@
 				BA0593837897CABB8409891A /* Pods-Pick me a MovieUITests.debug.xcconfig */,
 				A3038902B8C0CF93C6F19DC5 /* Pods-Pick me a MovieUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -153,15 +156,17 @@
 				D7BC3E7E2278796400A28DD6 /* AppDelegate.swift */,
 				D7BC3E802278796400A28DD6 /* ViewController.swift */,
 				D762CCCD227A3AB000D683E2 /* MovieViewController.swift */,
+				D767AB3B227B8E8B00E281D8 /* GenreCollectionViewCell.swift */,
+				D767AB39227B796900E281D8 /* StarCollectionView.swift */,
 				D7BC3E822278796400A28DD6 /* Main.storyboard */,
 				D7BC3E852278796500A28DD6 /* Assets.xcassets */,
-				D7BC3E872278796500A28DD6 /* LaunchScreen.storyboard */,
-				D7BC3E8A2278796500A28DD6 /* Info.plist */,
 				D7BC3EB02278B82A00A28DD6 /* CardView.swift */,
 				D7BC3EB22278C16C00A28DD6 /* CircularView.swift */,
 				D762CCC72279F46500D683E2 /* Movie.swift */,
 				D762CCCB227A09E300D683E2 /* MovieProvider.swift */,
 				D762CCC9227A099000D683E2 /* movies.json */,
+				D7BC3E872278796500A28DD6 /* LaunchScreen.storyboard */,
+				D7BC3E8A2278796500A28DD6 /* Info.plist */,
 			);
 			path = "Pick me a Movie";
 			sourceTree = "<group>";
@@ -411,12 +416,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D767AB3A227B796900E281D8 /* StarCollectionView.swift in Sources */,
 				D7BC3E812278796400A28DD6 /* ViewController.swift in Sources */,
 				D7BC3EB32278C16C00A28DD6 /* CircularView.swift in Sources */,
 				D762CCCC227A09E300D683E2 /* MovieProvider.swift in Sources */,
 				D762CCCE227A3AB000D683E2 /* MovieViewController.swift in Sources */,
 				D762CCC82279F46500D683E2 /* Movie.swift in Sources */,
 				D7BC3EB12278B82A00A28DD6 /* CardView.swift in Sources */,
+				D767AB3C227B8E8B00E281D8 /* GenreCollectionViewCell.swift in Sources */,
 				D7BC3E7F2278796400A28DD6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

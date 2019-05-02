@@ -21,8 +21,8 @@ class MovieProvider{
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let dicts = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! NSArray
                 for anyDict in dicts{
-                    let dict = anyDict as! [String :String]
-                    let toAppend = Movie(director_name: dict["director_name"], num_critic_for_reviews: dict["num_critic_for_reviews"], duration: dict["duration"], actor_2_name: dict["actor_2_name"], genres: dict["genres"], actor_1_name: dict["actor_1_name"], movie_title: dict["movie_title"], num_voted_users: dict["num_voted_users"], actor_3_name: dict["actor_3_name"], plot_keywords: dict["plot_keywords"], movie_imdb_link: dict["movie_imdb_link"], country: dict["country"], content_rating: dict["content_rating"], title_year: dict["title_year"], imdb_score: dict["imdb_score"], movie_facebook_likes: dict["movie_facebook_likes"], synopsis: dict["synopsis"], imageSrc: dict["imageSrc"], metacriticScore: dict["metacriticScore"])
+                    let dict = anyDict as! [String : Any]
+                    let toAppend = Movie( director_name: (dict["director_name"] as! String), num_critic_for_reviews: dict["num_critic_for_reviews"] as! String, duration: dict["duration"] as! String, genres: (dict["genres"] as! [String]), movie_title: dict["movie_title"] as! String, num_voted_users: dict["num_voted_users"] as! String, plot_keywords: dict["plot_keywords"] as! String, movie_imdb_link: dict["movie_imdb_link"] as! String, country: dict["country"] as! String, content_rating: dict["content_rating"] as! String, title_year: dict["title_year"] as! String, imdb_score: dict["imdb_score"] as! String, movie_facebook_likes: dict["movie_facebook_likes"] as! String, synopsis: dict["synopsis"] as! String, imageSrc: dict["imageSrc"] as! String, metacriticScore: dict["metacriticScore"] as! String, actors: (dict["actors"] as! [String]))
                     movies.append(toAppend)
                 }
             } catch let error{
@@ -35,7 +35,7 @@ class MovieProvider{
         return movies
     }()
     
-    private init(){    }
+    private init(){}
     
     func getRecomendation() -> Movie?{
         if(self.presentedMovies.count < 10){
