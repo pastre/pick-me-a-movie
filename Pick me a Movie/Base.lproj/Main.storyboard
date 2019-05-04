@@ -257,7 +257,7 @@
         <scene sceneID="I4H-go-16U">
             <objects>
                 <navigationController id="fsY-xJ-KfW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Movies" id="cQK-xx-d6D"/>
+                    <tabBarItem key="tabBarItem" title="Movies" image="movie" id="cQK-xx-d6D"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GSw-Md-wg9">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -582,7 +582,7 @@
         <scene sceneID="XZG-NK-JLF">
             <objects>
                 <navigationController id="Ead-ND-DZv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="NXC-fv-flH"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="NXC-fv-flH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fAk-0P-fMQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -598,7 +598,9 @@
     </scenes>
     <resources>
         <image name="dislikedSelected" width="100" height="100"/>
+        <image name="home" width="25" height="25"/>
         <image name="likedSelected" width="100" height="100"/>
+        <image name="movie" width="25" height="25"/>
         <image name="unwatchedSelected" width="100" height="100"/>
         <image name="user" width="166" height="178"/>
         <image name="watchedSelected" width="100" height="98"/>
