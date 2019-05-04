@@ -136,7 +136,7 @@ class OverlayView: UIView {
     }
     
     func setupIcon(imageView: UIImageView, at: String){
-        var wFrame, hFrame : CGFloat!
+        var wFrame, hFrame, wMult, hMult : CGFloat!
         
         self.addSubview(imageView)
 //        iconLocation[at] = imageView
@@ -149,27 +149,34 @@ class OverlayView: UIView {
            ---------
          */
         
-        let offset = CGFloat(40)
+        let offset = CGFloat(50)
         switch at {
             case "t":
                 wFrame = 0
                 hFrame = -offset
+                wMult = 0.3
+                hMult = 0.2
             case "r":
                 wFrame = offset
                 hFrame = 0
+                hMult = 0.2
+                wMult = 0.2
             case "l":
                 wFrame = -offset
                 hFrame = 0
-            
+                hMult = 0.2
+                wMult = 0.2
             case "b":
                 wFrame = 0
                 hFrame = offset
+                wMult = 0.3
+                hMult = 0.2
             default:
                 break
         }
         
-        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2).isActive = true
-        imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2).isActive = true
+        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: wMult).isActive = true
+        imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: hMult).isActive = true
         
 //        imageView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 2).isActive = true
 //        imageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.trailingAnchor, constant: -20).isActive = true

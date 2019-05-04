@@ -2,4 +2,114 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pick me a Movie/ViewController.swift"
+            timestampString = "578670315.373927"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_me_a_Movie.ViewController.isPanning.getter : Swift.Optional&lt;Swift.Bool&gt;"
+                  moduleName = "Pick me a Movie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pastre/Documents/Crash%20Course/Pick%20me%20a%20Movie/Pick%20me%20a%20Movie/ViewController.swift"
+                  timestampString = "578587628.600354"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_me_a_Movie.ViewController.isPanning.setter : Swift.Optional&lt;Swift.Bool&gt;"
+                  moduleName = "Pick me a Movie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pastre/Documents/Crash%20Course/Pick%20me%20a%20Movie/Pick%20me%20a%20Movie/ViewController.swift"
+                  timestampString = "578587628.608321"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "119">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_me_a_Movie.ViewController.isPanning.modify : Swift.Optional&lt;Swift.Bool&gt;"
+                  moduleName = "Pick me a Movie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pastre/Documents/Crash%20Course/Pick%20me%20a%20Movie/Pick%20me%20a%20Movie/ViewController.swift"
+                  timestampString = "578587628.61028"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_me_a_Movie.ViewController.isPanning.modify : Swift.Optional&lt;Swift.Bool&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Pick me a Movie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pastre/Documents/Crash%20Course/Pick%20me%20a%20Movie/Pick%20me%20a%20Movie/ViewController.swift"
+                  timestampString = "578587628.611971"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_me_a_Movie.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Pick_me_a_Movie.ViewController"
+                  moduleName = "Pick me a Movie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pastre/Documents/Crash%20Course/Pick%20me%20a%20Movie/Pick%20me%20a%20Movie/ViewController.swift"
+                  timestampString = "578587628.613898"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "525">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_me_a_Movie.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Pick_me_a_Movie.ViewController&gt;"
+                  moduleName = "Pick me a Movie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pastre/Documents/Crash%20Course/Pick%20me%20a%20Movie/Pick%20me%20a%20Movie/ViewController.swift"
+                  timestampString = "578587628.61558"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "445">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

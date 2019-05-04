@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
 
-    @IBOutlet weak var moviePoster: UIImageView!
-    @IBOutlet weak var moviePosterView: CardView!
-    @IBOutlet weak var loadingView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var cardView: CardView!
+    @IBOutlet weak var loadingViewOutlet: UIActivityIndicatorView!
     
     var isPanning: Bool!
     var isPresentingOverlay: Bool!
@@ -21,7 +20,6 @@ class ViewController: UIViewController {
     var startingTransform: CGAffineTransform!
     var point: CGPoint!
     
-    var currentMovie: Movie?
     let movieProvider: MovieProvider = MovieProvider.instance
     
     let overlayView: OverlayView = {
@@ -32,35 +30,19 @@ class ViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.changeMovie()
+        self.loadingView = self.loadingViewOutlet
+        self.moviePoster = self.posterImageView
         
+        super.viewDidLoad()
+        
+        self.changeMovie()
         // Do any additional setup after loading the view.
     }
 
     func changeMovie(){
         let newMovie = self.movieProvider.getMovie()
-        self.currentMovie = newMovie
-        self.updateMoviePoster(from: newMovie.imageSrc)
-    }
-    
-    
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    func updateMoviePoster(from string: String){ // https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
-        self.loadingView.startAnimating()
-        let url = URL(string: string)!
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            DispatchQueue.main.async() {
-                self.moviePoster.image = UIImage(data: data)
-                self.loadingView.stopAnimating()
-            }
-        }
+        self.movie = newMovie
+        self.updateMoviePoster()
     }
     
     func presentOverlay(){
@@ -90,7 +72,7 @@ class ViewController: UIViewController {
     
     func onPanStarted(x: CGFloat){
         self.isPanning = true
-        self.startingTransform = self.moviePosterView.transform
+        self.startingTransform = self.cardView.transform
 //        self.lastPoint = x
         self.presentOverlay()
 //        self.lastPoint =
@@ -104,7 +86,7 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.1) {
             let div = x
             let tmp = CGAffineTransform(rotationAngle: ( div)/divParam).translatedBy(x: x, y: y)
-            self.moviePosterView.transform = tmp
+            self.cardView.transform = tmp
         }
         self.overlayView.updateSelectedIcons(at: transform)
     }
@@ -113,15 +95,14 @@ class ViewController: UIViewController {
         self.isPanning = false
 //        self.displayView = CGAffineTransform(rotationAngle: 30.0)
         UIView.animate(withDuration: 0.5) {
-            self.moviePosterView.transform = self.startingTransform
+            self.cardView.transform = self.startingTransform
         }
         self.removeOverlay()
         
         guard let rec = self.movieProvider.getRecomendation() else{
             return
         }
-        self.currentMovie = rec
-        self.performSegue(withIdentifier: "movieDetails", sender: self)
+        self.performSegue(withIdentifier: "onMatch", sender: rec)
         
 //        self.performSegue(withIdentifier: "movieDetails", sender: nil)
     }
@@ -129,7 +110,7 @@ class ViewController: UIViewController {
     @IBAction func onTapped(_ sender: Any) {
         let gesture = sender as! UIPanGestureRecognizer
 //        print("View is being panned", gesture)
-        let translation = gesture.translation(in: self.moviePosterView)
+        let translation = gesture.translation(in: self.cardView)
         self.point = translation
 //        print("translation", translation)≈
         switch gesture.state {
@@ -153,10 +134,9 @@ class ViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let movie = self.currentMovie else{ return }
-        let dest = segue.destination as! MovieViewController
+        let movie = sender as! Movie
+        let dest = segue.destination as! BaseViewController
         dest.movie = movie
-        
     }
     
 }

@@ -7,25 +7,31 @@
 //
 
 import UIKit
+import Cosmos
 
-class MovieViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MovieViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var posterImageOutlet: UIImageView!
+    @IBOutlet weak var loadingOutlet: UIActivityIndicatorView!
+    
     @IBOutlet weak var synopsisLabel: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
-    public var movie: Movie!
     
     @IBOutlet weak var starsCollectionView: UICollectionView!
     @IBOutlet weak var genresCollectionView: UICollectionView!
     
     
+    @IBOutlet weak var metascoreRating: CosmosView!
+    @IBOutlet weak var imdbRating: CosmosView!
+
     override func viewDidLoad() {
+        self.moviePoster = self.posterImageOutlet
+        self.loadingView = self.loadingOutlet
         super.viewDidLoad()
 //        starsCollectionView.restorationIdentifier = "starCell"
         starsCollectionView.delegate = self
@@ -38,21 +44,25 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let metaScore:Double = Double(self.movie!.metacriticScore)!
+        let imdbScore:Double = Double(self.movie!.imdb_score)!
         super.viewWillAppear(animated)
-        self.updateMoviePoster(from: self.movie.imageSrc)
-        self.synopsisLabel.text = movie.synopsis
-        self.titleLabel.text = movie.movie_title
-        self.countryLabel.text = movie.country
-        self.durationLabel.text = self.movie.duration
-        self.yearLabel.text = self.movie.title_year
+        self.updateMoviePoster()
+        self.synopsisLabel.text = self.movie!.synopsis
+        self.titleLabel.text = self.movie!.movie_title
+        self.countryLabel.text = self.movie!.country
+        self.durationLabel.text = self.movie!.duration
+        self.yearLabel.text = self.movie!.title_year
+        self.metascoreRating.rating =  metaScore / 20
+        self.imdbRating.rating = imdbScore / 2
 //        self.starsCollectionView.dataSource = self
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.starsCollectionView{
-            return self.movie.actors.count
+            return self.movie!.actors.count
         }
-        return self.movie.genres.count
+        return self.movie!.genres.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -63,12 +73,12 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         if collectionView == self.starsCollectionView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "starCell", for: indexPath) as! StarCollectionViewCell
-            let starName = self.movie.actors[indexPath.item]
+            let starName = self.movie!.actors[indexPath.item]
             cell.actorName.text = starName
             return cell
         }
         
-        let genre = self.movie.genres[indexPath.item]
+        let genre = self.movie!.genres[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "genreCell", for: indexPath) as! GenreCollectionViewCell
         cell.genreName.text = genre
         return cell
@@ -79,25 +89,6 @@ class MovieViewController: UIViewController, UICollectionViewDelegate, UICollect
 //    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 //
 //    }
-    
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-    func updateMoviePoster(from string: String){ // https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
-        self.loadingView.startAnimating()
-        let url = URL(string: string)!
-        print("Download Started")
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
-            DispatchQueue.main.async() {
-                self.posterImageView.image = UIImage(data: data)
-                self.loadingView.stopAnimating()
-            }
-        }
-    }
     /*
     // MARK: - Navigation
 
