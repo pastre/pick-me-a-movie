@@ -40,10 +40,10 @@ class MovieProvider{
     func getRecomendation() -> Movie?{
         let rand = Int.random(in: 0..<100)
 //        return nil
-//        if(rand > 10){
-//            return nil
-//        }
-//        
+        if(rand > 15){
+            return nil
+        }
+//
         let ret = movies.randomElement()
         self.recommendations.append(ret!)
         return ret
