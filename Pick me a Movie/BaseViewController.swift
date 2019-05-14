@@ -27,6 +27,10 @@ class BaseViewController: UIViewController {
     
     
     func updateMoviePoster(){ // https://stackoverflow.com/questions/24231680/loading-downloading-image-from-url-on-swift
+        if self.movie?.image != nil{
+            self.moviePoster.image = self.movie?.image
+            return
+        }
         self.loadingView.startAnimating()
         let url = URL(string: self.movie!.imageSrc)!
         print("Download Started")
@@ -35,9 +39,12 @@ class BaseViewController: UIViewController {
             print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Download Finished")
             DispatchQueue.main.async() {
-                self.moviePoster.image = UIImage(data: data)
+                let downloadedImage = UIImage(data: data)
+                self.moviePoster.image = downloadedImage
+                self.movie?.image = downloadedImage
                 self.loadingView.stopAnimating()
             }
+            
         }
     }
         /*
