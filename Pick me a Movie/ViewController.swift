@@ -13,6 +13,9 @@ class ViewController: BaseViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var loadingViewOutlet: UIActivityIndicatorView!
+    @IBOutlet weak var anoLabel: UILabel!
+    @IBOutlet weak var titluloLabel: UILabel!
+    
     
     var isPanning: Bool!
     var isPresentingOverlay: Bool!
@@ -32,7 +35,6 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         self.loadingView = self.loadingViewOutlet
         self.moviePoster = self.posterImageView
-        
         super.viewDidLoad()
         
         self.changeMovie()
@@ -43,6 +45,8 @@ class ViewController: BaseViewController {
         let newMovie = self.movieProvider.getMovie()
         self.movie = newMovie
         self.updateMoviePoster()
+        self.titluloLabel.text = self.movie!.movie_title
+        self.anoLabel.text = self.movie!.title_year
     }
     
     func presentOverlay(){
