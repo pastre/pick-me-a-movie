@@ -61,7 +61,7 @@ class ViewController: BaseViewController {
         }, completion: nil)
         
     }
-    func removeOverlay(){
+    func removeOverlay(selected: Bool){
         //TODO: Animation
         self.overlayView.animateSelectedIcons()
         UIView.animate(withDuration: 0.8, animations: {
@@ -69,7 +69,9 @@ class ViewController: BaseViewController {
         }) { (completed) in
             self.overlayView.alpha = 1
             self.overlayView.removeFromSuperview()
-            self.changeMovie()
+            if selected {
+                self.changeMovie()
+            }
         }
 
     }
@@ -101,7 +103,14 @@ class ViewController: BaseViewController {
         UIView.animate(withDuration: 0.5) {
             self.cardView.transform = self.startingTransform
         }
-        self.removeOverlay()
+       
+        if self.overlayView.currentSelection.isEmpty{
+            self.removeOverlay(selected: false)
+           return
+        }
+        
+        self.removeOverlay(selected: true)
+        
         
         guard let rec = self.movieProvider.getRecomendation() else{
             return

@@ -72,24 +72,32 @@ class OverlayView: UIView {
         let y = point.y
         var mapTouch: String! = ""
         
-        if x > 0{
-            self.liked.image = UIImage(named: "likedSelected")
-            self.disliked.image = UIImage(named: "disliked")
-            mapTouch += ("r")
-        }else{
+        if point.distance(to: CGPoint.zero) < 50{
             self.liked.image = UIImage(named: "liked")
-            self.disliked.image = UIImage(named: "dislikedSelected")
-            mapTouch += ("l")
-        }
-    
-        if y < 0{
-            self.watched.image = UIImage(named: "watchedSelected")
-            self.unwatched.image = UIImage(named: "unwatched")
-            mapTouch += ("t")
-        }else {
+            self.disliked.image = UIImage(named: "disliked")
             self.watched.image = UIImage(named: "watched")
-            self.unwatched.image = UIImage(named: "unwatchedSelected")
-            mapTouch += ("b")
+            self.unwatched.image = UIImage(named: "unwatched")
+            mapTouch = ""
+        }else{
+            if x > 0{
+                self.liked.image = UIImage(named: "likedSelected")
+                self.disliked.image = UIImage(named: "disliked")
+                mapTouch += ("r")
+            }else{
+                self.liked.image = UIImage(named: "liked")
+                self.disliked.image = UIImage(named: "dislikedSelected")
+                mapTouch += ("l")
+            }
+        
+            if y < 0{
+                self.watched.image = UIImage(named: "watchedSelected")
+                self.unwatched.image = UIImage(named: "unwatched")
+                mapTouch += ("t")
+            }else {
+                self.watched.image = UIImage(named: "watched")
+                self.unwatched.image = UIImage(named: "unwatchedSelected")
+                mapTouch += ("b")
+            }
         }
 //        print("Map touch is", mapTouch, self.currentSelection ?? "espera ai")
         self.currentSelection = mapTouch
@@ -98,6 +106,8 @@ class OverlayView: UIView {
     
     func animateSelectedIcons(){
         let transformScale: CGFloat = 4
+        
+        if self.currentSelection.isEmpty { return }
         
         let isTop = self.currentSelection.contains("t")
         let isLeft = self.currentSelection.contains("l")
@@ -180,7 +190,6 @@ class OverlayView: UIView {
         
 //        imageView.topAnchor.constraint(greaterThanOrEqualTo: self.topAnchor, constant: 2).isActive = true
 //        imageView.trailingAnchor.constraint(greaterThanOrEqualTo: self.trailingAnchor, constant: -20).isActive = true
-        
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: wFrame).isActive = true
         imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: hFrame).isActive = true
         
@@ -196,4 +205,11 @@ class OverlayView: UIView {
     }
     */
 
+}
+
+
+extension CGPoint{
+    func distance(to: CGPoint) -> CGFloat{
+        return sqrt(pow(self.x - to.x, 2) + pow(self.y - to.y, 2) )
+    }
 }

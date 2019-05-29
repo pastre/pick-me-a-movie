@@ -182,7 +182,7 @@
         <!--Match View Controller-->
         <scene sceneID="muD-K4-mqT">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="A23-RU-Zzz" customClass="MatchViewController" customModule="Pick_me_a_Movie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overFullScreen" id="A23-RU-Zzz" customClass="MatchViewController" customModule="Pick_me_a_Movie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kMb-W9-RA8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
